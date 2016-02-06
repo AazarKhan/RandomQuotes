@@ -116,11 +116,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(RFQ_API_Object result) {
+            // dismissing the progress animation
             progressDialog.dismiss();
+
             super.onPostExecute(result);
+
+            // setting the quotes and author
             myTextView.setText(result.getQuote());
             authorTextView.setText(result.getAuthor());
 
+            // animations for text views.
             YoYo.with(Techniques.Landing)
                     .duration(500)
                     .playOn(findViewById(R.id.myTextView));
